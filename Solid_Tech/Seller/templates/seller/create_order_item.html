@@ -1,0 +1,37 @@
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block title %}<title>List category</title>{% endblock %}#}
+{#{% load static %}#}
+{#{% block content %}#}
+{#<!-- messages -->#}
+{#{% if messages %}#}
+{#    <div class="alert alert-dark" style="text-align: center" role="alert">#}
+{#        Messages#}
+{#    </div>#}
+{#    {% for message in messages %}#}
+{#        {% if 'success' in message.tags %}#}
+{#            <div class="alert alert-success" style="text-align: center" role="alert">#}
+{#                {{ message }}#}
+{#            </div>#}
+{#        {% else %}#}
+{#            <div class="alert alert-danger" style="text-align: center" role="alert">#}
+{#                {{ message }}#}
+{#            </div>#}
+{#        {% endif %}#}
+{#    {% endfor %}#}
+{##}
+{#{% endif %}#}
+{#{% for order in order.order.all %}#}
+{#<H2>{{ order.product }}</H2>#}
+{#    <h2>{{ order.quantity }}</h2>#}
+{#<a href="{% url 'delete' order.id%}"><button class="delete">delete</button></a>#}
+{##}
+{##}
+{#{% endfor %}#}
+{#<form action="" method="POST">#}
+{#    {{ form.as_p }}#}
+{#    {% csrf_token %}#}
+{#    <button type="submit">SUBMIT</button>#}
+{#</form>#}
+{##}
+{#{% endblock %}#}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}<title>List category</title>{% endblock %}
+{% load static %}
+<link rel="stylesheet" class="img" href="{% static 'css/listproduct.css' %}" >
+
+{% block content %}
+
+<body>
+<form action="" method="POST">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button type="submit">SUBMIT</button>
+</form>
+</body>
+{% endblock %}
