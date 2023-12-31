@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% block title %}
+        <link rel="stylesheet" href="{% static 'css/list.css' %}">
+    {% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{% block content %}
+    <div class="main-cointainer">
+    <h1 style="text-align: center; color: #3aacb2">Solid Tech International</h1>
+
+    <h1 style="text-align: center; color: #3aacb2">Receipt</h1>
+    <h6 style="text-align: left">Name: {{ order.name }}</h6>
+    <h6 style="text-align: left">Date: {{ order.created_at }}</h6>
+    <div class="red">
+    <table class="table table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Items</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quatity</th>
+        <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tb>
+      {% for items in order.get_order_items %}
+          <tr>
+        <td>{{ items.item.name }}</td>
+        <td>{{ items.item.price }}</td>
+        <td>{{ items.quantity }}</td>
+          <td>{{ items.cost }}</td>
+          </tr>
+      {% endfor %}
+    </tb>
+
+
+  </tbody>
+</table>
+    </div>
+
+    <h6 style="padding-left: 280px">Total: #{{ order.total_price }}</h6>
+ </div>
+{% endblock %}
+</body>
+</html>

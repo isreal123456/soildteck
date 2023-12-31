@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    {% load static %}
+    {% block title %}
+        <link rel="stylesheet" href="{% static 'css/list.css' %}">
+    {% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+    <title>Document</title>
+</head>
+{% block content %}
+<body>
+
+<div style="padding-top: 40px">
+    {% for order in orders %}
+        <div class="list">
+        <p>{{ order.name }}</p>
+        <a href="{% url 'orderdetail' order.pk %}"><button type="button" class="btn btn-outline-secondary">View</button></a>
+        <br>
+     </div>
+
+    {% endfor %}
+</div>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% block title %}
+     {% load static %}
+     <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+
+<div id="form">
+    <h3 id="header">ADD PRODUCT</h3>
+    <form action="" method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <div id="button">
+                <button type="submit">Add</button>
+        </div>
+    </form>
+</div>
+        <br>
+{% endblock %}
+</body>
+</html>
+
