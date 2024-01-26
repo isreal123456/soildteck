@@ -7,8 +7,16 @@ from django.forms import formset_factory, inlineformset_factory
 from Sellers.forms import OrderItemForm, OrderForm, OrderItemFormset
 from Sellers.models import Order, OrderItem
 from Warehouse.models import Product
+from django.http import FileResponse
+import io
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import A8
 
 
+def pdf(request):
+    buf = io.BytesIO()
+    cavas =canvas.Canvas(buf, pagesize=A8, bottomup=0)
 class CreateOrder(CreateView):
     template_name = "seller/create_order.html"
     form_class = OrderForm
@@ -45,12 +53,13 @@ def add_orderitems(request, pk):
                     orderItem.save()
                     obj.completed = True
                     obj.save()
-                    return redirect('orderdetail', pk=pk)
+
                 else:
                     messages.error(request,f"We don't Currently have the quantity available for {orderItem.item}")
+    if obj == True:
+        return redirect('orderdetail', pk=pk)
     context['formset'] = orderItemFormset
     context['obj'] = obj
-
     return render(request, "seller/add_orderitems.html", context)
 
 
