@@ -9,21 +9,43 @@ from Warehouse.models import Category, Product, IncomingProduct
 class CreateCategory(CreateView):
     model = Category
     template_name = "Warehouse/create_category.html"
-    fields = "__all__"
-    success_url = reverse_lazy("listcategory")
+    fields = ('parent', 'name',)
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        if self.object.parent is None:
+            return reverse_lazy('listcategory', kwargs={'pk': self.object.pk})
+        else:
+            cat = self.object.get_ancestors().filter(parent=None).first()
+            return reverse_lazy('listcategory', kwargs={'pk': cat.pk})
 
 
 class CreateProduct(CreateView):
     model = Product
     template_name = "Warehouse/create-product.html"
-    fields = "__all__"
-    success_url = reverse_lazy("listcategory")
+    fields = ('name', 'category', 'price', 'quantity',)
+
+    def get_success_url(self):
+        return reverse_lazy('list', kwargs={'pk': self.object.category.pk})
+
+    def form_valid(self, form):
+        form.instance.availability = True
+        form.instance.user = self.request.user
+        form.save()
+        return super().form_valid(form)
 
 
-class ListCategory(ListView):
+class ListCategory(DetailView):
     model = Category
     template_name = "Warehouse/list_category.html"
-    context_object_name = "Category"
+
+    def get_queryset(self):
+        category = Category.objects.filter(pk=self.kwargs['pk'])
+        return category
 
 
 class ListProduct(DetailView):
@@ -32,27 +54,21 @@ class ListProduct(DetailView):
     context_object_name = "products"
 
 
+
+
 class IncomingProductCreate(CreateView):
     template_name = 'Warehouse/incoming_product.html'
     form_class = IncomingProductForm
-    success_url = reverse_lazy("listcategory")
 
     def form_valid(self, form):
-        products = get_object_or_404(Product, name=form.instance.product.name)
+        products = get_object_or_404(Product, pk=form.instance.product.pk)
         products.quantity += form.instance.quantity
         products.save()
+        form.instance.user = self.request.user
+        form.save()
         return super().form_valid(form)
 
-class delete(DeleteView):
-    model = Product
-    template_name = "Warehouse/delete.html"
-    success_url = reverse_lazy("listcategory")
-    context_object_name = "product"
-
-
-
-
-
-
+    def get_success_url(self):
+        return reverse_lazy('list', kwargs={'pk': self.object.product.category.pk})
 
 # Create your views here.
