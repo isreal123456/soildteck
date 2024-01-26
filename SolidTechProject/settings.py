@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'Warehouse',
     'Sellers',
     'Accounts',
-    'bootstrap5',
+    'bootstrap',
     'mptt',
 ]
 
