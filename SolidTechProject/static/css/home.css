@@ -1,10 +1,9 @@
-body{
+body {
     background-color: #E6E6FA;
 }
 
-#title{
-    style: color: #000;
-    font-family: Informal Roman;
+#title {
+    font-family: Informal Roman, serif;
     font-size: 80px;
     font-style: normal;
     font-weight: 400;
@@ -12,70 +11,85 @@ body{
     text-align: center;
 }
 
-#order{
+#order {
     text-align: center;
     padding: 40px;
     font-size: 25px;
-    font-family: SansSerif;
+    font-family: SansSerif, serif;
 }
 
-#order-div{
-    box-shadow: hsl(0,0%,60%) 0 0 16px;
+#order-div {
+    box-shadow: hsl(0, 0%, 60%) 0 0 16px;
     border-radius: 15px;
     background-color: white;
 }
 
-#profit{
+#profit {
     text-align: center;
     padding: 40px;
     font-size: 25px;
-    font-family: SansSerif;
+    font-family: SansSerif, serif;
 }
 
-#profit-div{
-    box-shadow: hsl(0,0%,60%) 0 0 16px;
+#profit-div {
+    box-shadow: hsl(0, 0%, 60%) 0 0 16px;
     border-radius: 15px;
     background-color: white;
 
 }
 
-#container-1{
+#container-1 {
     display: grid;
-    grid-template-columns: 320px 320px;
+    grid-template-columns: 300px 300px;
     column-gap: 50px;
     justify-content: center;
 }
 
-#name{
-    font-family: SansSerif;
+#name {
+    font-family: SansSerif, serif;
     font-size: 17px;
 }
 
-#date{
-    font-family: SansSerif;
+#date {
+    font-family: SansSerif, serif;
     font-size: 13px;
 }
 
-#container-2{
-    margin: auto;
+#container-2 {
+    display: grid;
+
+    justify-content: center;
+}
+
+#latest-order-div {
+
     padding: 7px;
-    box-shadow: hsl(0,0%,60%) 0 0 16px;
+    box-shadow: hsl(0, 0%, 60%) 0 0 16px;
     border-radius: 15px;
-    width: 22%;
+
     background-color: white;
 }
 
-#sub{
+#log-div {
+
+    padding: 7px;
+    box-shadow: hsl(0, 0%, 60%) 0 0 16px;
+    border-radius: 15px;
+
+    background-color: white;
+}
+
+#sub {
     display: flex;
     justify-content: space-between;
 }
 
-#text{
+#text {
     text-align: center;
-    font-family: SansSerif;
+    font-family: SansSerif, serif;
 }
 
-#view-a{
+#view-a {
     text-decoration: none;
     color: black;
     text-align: center;
@@ -93,20 +107,29 @@ button {
     font-size: 15px;
 }
 
-button:hover{
+button:hover {
     background-color: grey;
 }
 
-#sub-div{
+#sub-div {
     border: solid #afafaf 1px;
     margin-top: 20px;
     padding: 4px;
     border-radius: 5px;
-    box-shadow: hsl(0,0%,60%) 0 0 16px;
+    box-shadow: hsl(0, 0%, 60%) 0 0 16px;
 }
 
-a{
+a {
     text-align: center;
     text-decoration: none;
     color: black;
+}
+
+#log-sub {
+    border: solid #afafaf 1px;
+    margin-top: 20px;
+    padding: 2px;
+    border-radius: 5px;
+    box-shadow: hsl(0, 0%, 60%) 0 0 16px;
+    width: 320px;
 }

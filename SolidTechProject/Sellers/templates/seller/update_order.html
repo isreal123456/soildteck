@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+    {% block title %}
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/form.css' %}">
+
+    {% endblock %}
+{% block content %}
+    <div id="form">
+        <h1 id="header">Payment page</h1>
+        <h3>{{ update.name }}</h3>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div id="button">
+                <button type="submit">MAKE PAYMENT</button>
+            </div>
+        </form>
+    </div>
+    <br>
+    <div class="summary">
+        <h2>ORDER SUMMARY</h2>
+
+        <h3> Total Price: {{ update.total_price }}</h3>
+        <h3> Number Of Product Ordered: {{ update.num_of_product }}</h3>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,37 @@
+#container{
+    display: grid;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+#log-div {
+
+    padding: 7px;
+    box-shadow: hsl(0, 0%, 60%) 0 0 16px;
+    border-radius: 15px;
+    background-color: white;
+}
+
+#text {
+    text-align: center;
+    font-family: SansSerif, serif;
+}
+
+#log-sub {
+    border: solid #afafaf 1px;
+    margin-top: 20px;
+    padding: 2px;
+    border-radius: 5px;
+    box-shadow: hsl(0, 0%, 60%) 0 0 16px;
+    width: 350px;
+}
+
+#name {
+    font-family: SansSerif, serif;
+    font-size: 17px;
+}
+
+#date {
+    font-family: SansSerif, serif;
+    font-size: 13px;
+}
